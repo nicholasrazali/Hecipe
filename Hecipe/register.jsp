@@ -30,6 +30,7 @@
                 <td><input type="submit" value="Register"></td>
             </tr>
         </table>
+        <p> <%= session.getAttribute("error") == null ? "" : session.getAttribute("error") %></P>
     </form>
     
 

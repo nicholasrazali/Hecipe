@@ -15,7 +15,13 @@
 </head>
 <body>
     <%@ include file="header.jsp" %>
-    <%@ include file="/Hecipe/footer.jsp" %>
+    
+
+    <%
+        out.println("Hallo, " + session.getAttribute("role"));
+    %>
+
+    <%@ include file="footer.jsp" %>
     
 </body>
 </html>

@@ -7,7 +7,38 @@
     <title>Document</title>
 </head>
 <body>
-    <%@ include file="./Guest/header.jsp" %>
+  
+    <%-- Header --%>
+    <%  if(session.getAttribute("role") == null){ %>
+    <%@     include file="header.jsp" %>
+    <%  }else if(session.getAttribute("role") == "admin"){%>
+    <%@     include file="adminheader.jsp" %>
+    <%  }else {%>
+    <%@     include file="memberheader.jsp" %>
+    <%  } %>
+
+
+    <%-- Error login --%>
+   <p> <%= session.getAttribute("error") == null ? "" : session.getAttribute("error") %></P>
+
+
+    <%-- Remember me --%>
+    <%
+        Cookie[] cookies = request.getCookies();
+        String email = null;
+
+        if(cookies != null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("email")){
+                    email = cookie.getValue();
+                }
+            }
+        }
+        if(email != null){
+            response.sendRedirect("home.jsp");
+        }
+    %>
+
     
     <div class="content container-md p-5">
         <div class="row">
@@ -17,7 +48,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="">
+                <form action="loginController.jsp">
                     <table  >
                         <tr>
                             <td><label for="email">Email: </label></td>
@@ -28,8 +59,7 @@
                             <td><input type="password" name="password" placeholder="Password"></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" placeholder="E-mail">
-                            <label for="checkbox">Remember me </label></td>
+                            <td><input type="checkbox" name="remember" value="remember">Remember me</td>
                         </tr>
                     </table>
                     
