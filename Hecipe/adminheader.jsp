@@ -27,7 +27,7 @@
           <a class="nav-link active" aria-current="page" href="home.jsp">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Admin</a>
+          <a class="nav-link active" aria-current="page" href="food.jsp">Admin</a>
         </li>
       </ul>
     </div>

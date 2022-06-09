@@ -8,15 +8,7 @@
 </head>
 <body>
   
-    <%-- Header --%>
-    <%  if(session.getAttribute("role") == null){ %>
-    <%@     include file="header.jsp" %>
-    <%  }else if(session.getAttribute("role") == "admin"){%>
-    <%@     include file="adminheader.jsp" %>
-    <%  }else {%>
-    <%@     include file="memberheader.jsp" %>
-    <%  } %>
-
+    <%@ include file="header.jsp" %>
 
     <%-- Error login --%>
    <p> <%= session.getAttribute("error") == null ? "" : session.getAttribute("error") %></P>

@@ -24,11 +24,35 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-    
+    <form action="" method="get">
+        <input type="text" name="search" id="">
+         <button type="submit">Search</button>
+    </form>
 
-    <%
-        out.println("Hallo, " + session.getAttribute("role"));
-    %>
+    <%  if(session.getAttribute("role") == "admin"){ %>
+        <a href="addfood.jsp"><input type="button" value="Add new food"></a>
+    <% } %>
+
+    <br>
+    <table>
+        <%  if(session.getAttribute("role") == null){ %>
+        <tr>
+            <td>Image</td>
+            <td>Name</td>
+            <td>Category</td>
+            <td>Price</td>
+        </tr>
+        <% } else{ %>
+            <tr>
+                <td>Image</td>
+                <td>Name</td>
+                <td>Category</td>
+                <td>Price</td>
+                <td>Action</td>
+            </tr>
+        <% } %>
+    </table>
+
 
     <%@ include file="footer.jsp" %>
     
