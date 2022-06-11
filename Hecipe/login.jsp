@@ -40,7 +40,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="loginController.jsp">
+                <form action="controller/loginController.jsp">
                     <table  >
                         <tr>
                             <td><label for="email">Email: </label></td>

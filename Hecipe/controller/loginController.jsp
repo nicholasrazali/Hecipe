@@ -1,4 +1,4 @@
-<%@include file="connect.jsp"%>
+<%@include file="../connect.jsp"%>
 
 <%
     String email = request.getParameter("email");
@@ -24,42 +24,43 @@
             check = check + 1;     
     }
 
+    Connect con = Connect.getConnection();
     String query = String.format("SELECT * FROM user WHERE email = '%s'", email);
-    ResultSet rs = st.executeQuery(query);
+    ResultSet rs = con.executeQuery(query);
     
     
     if(email.equals("") || email == null){
         session.setAttribute("error", "Email should not be empty");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../login.jsp");
     }
     else if(!email.contains("@") || !email.contains(".")){
         session.setAttribute("error", "Email should contain at(@) and dot(.) symbol");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../login.jsp");
     }
     else if(checkemail > 1){
         session.setAttribute("error", "Email should contain only one at(@) symbol");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../login.jsp");
     }
     else 
     if(check > 0){
         session.setAttribute("error", "Email should at (@) and dot(.) symbol must not be side by side");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../login.jsp");
     }
     else if(!rs.next()){
         session.setAttribute("error", "Wrong Email");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../login.jsp");
     }
     else if(password =="" || password==null){
         session.setAttribute("error", "Password should not be empty");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../login.jsp");
     }
     else if(password.length() < 6){
         session.setAttribute("error", "Password must be at least 6 characters");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../login.jsp");
     }
     else{
     query = String.format("SELECT * FROM user WHERE email = '%s' AND password = '%s'", email, password);
-    rs = st.executeQuery(query);
+    rs = con.executeQuery(query);
         if(rs.next()){
             if(email.equals("admin@gmail.com")){
                 session.setAttribute("role", "admin");
@@ -67,11 +68,13 @@
             else{
                 session.setAttribute("role", "member");
             }
-            response.sendRedirect("home.jsp");
+            
+            session.setAttribute("login", (session.getAttribute("login") == null) ? 0 : ((Integer)(session.getAttribute("login"))+1));
+            response.sendRedirect("../home.jsp");
         }
         else{
             session.setAttribute("error", "Wrong Password");
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("../login.jsp");
         }
     
     }

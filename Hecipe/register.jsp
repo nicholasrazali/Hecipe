@@ -10,7 +10,7 @@
 
     <%@ include file="header.jsp" %>
 
-    <form action="registerController.jsp" method="post" >
+    <form action="controller/registerController.jsp" method="post" >
         <table>
             <tr>
                 <td>Name: </td>

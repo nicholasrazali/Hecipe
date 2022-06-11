@@ -24,7 +24,9 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-    <form action="addfoodController.jsp" method="get">
+    <p> <%= session.getAttribute("error") == null ? "" : session.getAttribute("errorfood") %></P>
+
+    <form action="controller/addfoodController.jsp" method="get">
         <table>
             <tr>
                 <td>Name: </td>
@@ -33,10 +35,10 @@
             <tr>
                 <td>Category:</td>
                 <td><select id="category" name="category">
-                    <option value="meat">Meats</option>
-                    <option value="vege">Vegetarian</option>
-                    <option value="snack">Snack</option>
-                </select></tr>
+                    <option value="Meats">Meats</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Snack">Snack</option>
+                </select></td>
             </tr>
             <tr>
                 <td>Description:</td>

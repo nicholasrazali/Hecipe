@@ -24,7 +24,9 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-    
+    <%  
+        out.println((session.getAttribute("login") == null) ? 0 : session.getAttribute("login"));
+    %>
 
     <%
         out.println("Hallo, " + session.getAttribute("role"));
