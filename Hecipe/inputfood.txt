@@ -1,0 +1,2 @@
+INSERT INTO food (name, image, category, description, price, quantity) VALUES
+("Fried rice", "images/nasi_goreng.jpg", "Vegetarian", "A simple fried rice with various vegetation", 1000, 10)

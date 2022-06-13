@@ -8,7 +8,7 @@
     String qty = request.getParameter("foodqty");
     int checkdesc = 0;
     int check = 0;
-
+    String image = "images/pempek.jpg";
     Connect con = Connect.getConnection();
 
 
@@ -54,7 +54,7 @@
     }    
     else{
         
-        String query = String.format("INSERT INTO food (name, category, description, price, quantity) VALUES ('%s', '%s', '%s', '%d', '%d')",foodname,category, desciption, Integer.parseInt(price), Integer.parseInt(qty));
+        String query = String.format("INSERT INTO food (name, image, category, description, price, quantity) VALUES ('%s', '%s', '%s', '%s', '%d', '%d')",foodname,image,category, desciption, Integer.parseInt(price), Integer.parseInt(qty));
         con.executeUpdate(query);
 
         response.sendRedirect("../food.jsp");

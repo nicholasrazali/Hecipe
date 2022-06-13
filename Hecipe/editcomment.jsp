@@ -37,12 +37,8 @@
     <label><%=price%></label><br>
     <label>Quantity</label><br>
     <label><%=qty%></label><br>
-    <% if(session.getAttribute("role")=="member"){ %>   
-        <form action="controller/addcartController.jsp" >
-        <input type="hidden" name = "id" value="<%= id %>" >
-        <input type="hidden" name = "asaladd" value="detail" >
-        <button type="submit">Add cart</button>
-        </form>
+    <% if(session.getAttribute("role").equals("member")){ %>            
+        <a href="cart.jsp"><input type="button" value="Add cart"></a>
     <% } %>
 
 
@@ -58,10 +54,10 @@
     %>
         <%= rs2.getString("Name") %><br>
         <%= rs2.getString("comment") %><br>
-    <% if(session.getAttribute("role")=="admin"){ %>        
+    <% if(session.getAttribute("role").equals("admin")){ %>        
             <a href="controller/deletecommentController.jsp?id2=<%= rs2.getInt("id")%>"><button>Delete</button></a>   <br>      
 
-    <% }else if(session.getAttribute("role")=="member"){
+    <% }else if(session.getAttribute("role").equals("member")){
         if(userId == rs2.getInt("userID")){    %>   
         <a href="editcomment.jsp?id=<%= rs2.getInt("id") %>"><input type="button" value="Edit"></a>
         <a href="controller/deletecommentController.jsp?id2=<%= rs2.getInt("id") %>"><input type="button" value="Delete"></a><br>
@@ -69,7 +65,7 @@
     <% } %>
 
     <%-- Insert comment --%>
-    <% if(session.getAttribute("role")=="member"){ %>
+    <% if(session.getAttribute("role").equals("member")){ %>
         <form action="controller/addcommentController.jsp">
             <input type="hidden" name = "id" value="<%= id %>" >
             <textarea name="addcomment" id="" cols="30" rows="10"></textarea>

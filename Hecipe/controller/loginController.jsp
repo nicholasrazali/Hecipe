@@ -68,8 +68,8 @@
             else{
                 session.setAttribute("role", "member");
             }
-            
-            session.setAttribute("login", (session.getAttribute("login") == null) ? 0 : ((Integer)(session.getAttribute("login"))+1));
+            session.setAttribute("user",rs.getInt("Id"));
+            session.setAttribute("login", (session.getAttribute("login") == null) ? 1 : ((Integer)(session.getAttribute("login"))+1));
             response.sendRedirect("../home.jsp");
         }
         else{

@@ -1,0 +1,6 @@
+INSERT INTO comment (foodID, userID, comment) VALUES (13,9, "halo halo halo halo halo")	
+
+
+===
+# select
+SELECT * FROM comment Join user on comment.userID = user.Id WHERE foodID = 13

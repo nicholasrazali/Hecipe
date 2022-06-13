@@ -29,6 +29,18 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="food.jsp">Admin</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="cart.jsp">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="transaction.jsp">Transaction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="profile.jsp">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="controller/logoutController.jsp">Logout</a>
+        </li>
       </ul>
     </div>
     

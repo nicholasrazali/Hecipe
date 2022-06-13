@@ -35,6 +35,15 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="register.jsp">Register</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="cart.jsp">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="profile.jsp">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="controller/logoutController.jsp">Logout</a>
+        </li>
       </ul>
     </div>
     

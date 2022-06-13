@@ -24,7 +24,7 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-    <p> <%= session.getAttribute("error") == null ? "" : session.getAttribute("errorfood") %></P>
+    <p> <%= session.getAttribute("errorfood") == null ? "" : session.getAttribute("errorfood") %></P>
 
     <form action="controller/addfoodController.jsp" method="get">
         <table>

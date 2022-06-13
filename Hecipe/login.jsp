@@ -40,7 +40,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="controller/loginController.jsp">
+                <form action="controller/loginController.jsp" >
                     <table  >
                         <tr>
                             <td><label for="email">Email: </label></td>
@@ -63,6 +63,6 @@
         </div>
     </div>
 
-    <%@ include file="/Hecipe/footer.jsp" %>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

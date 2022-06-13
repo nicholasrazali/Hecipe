@@ -112,20 +112,24 @@
         </tr>
         <% while(rs.next()) { %>
         <tr>
-                <td><%= rs.getString("description") %></td>
+                <td><a><img src="<%= rs.getString("image") %>" > </a></td>
                 <td><a href="fooddetail.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("name")%><a></td>
                 <td><%= rs.getString("category") %></td>
                 <td><%= rs.getInt("price") %></td>
 
-                <% if(session.getAttribute("role").equals("admin")){ %>
+                <% if(session.getAttribute("role")=="admin"){ %>
                     <td>
                         <a href="editfood.jsp?id=<%= rs.getInt("id") %>"><input type="button" value="Edit"></a>
                         <a href="controller/deleteController.jsp?id=<%= rs.getInt("id") %>"><input type="button" value="Delete"></a>
                     </td>
                 <% } %>
-                <% if(session.getAttribute("role").equals("member")){ %>
-                    <td>
-                        <a href="cart.jsp"><input type="button" value="Add to cart"></a>
+                <% if(session.getAttribute("role")=="member"){ %>
+                <td>
+                <form action="controller/addcartController.jsp" >
+                    <input type="hidden" name = "id" value="<%= rs.getInt("id") %>" >
+                    <input type="hidden" name = "asaladd" value="food" >
+                    <button type="submit">Add cart</button>
+                </form>
                     </td>
                 <% } %>
                 
