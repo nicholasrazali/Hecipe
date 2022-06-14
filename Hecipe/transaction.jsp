@@ -30,6 +30,15 @@
             <td>Action</td>
         </tr>
         <%} else out.println("no transaction");%>
+
+        <%
+            query = "SELECT * FROM trheader";
+            if(session.getAttribute("role") == "member"){
+            query = String.format("SELECT * FROM trheader WHERE userID = '%d'", userId);
+            }
+             rs = con.executeQuery(query);
+        %>
+        
         <% while(rs.next()) { %>
         <tr>
             <td><%= rs.getString("date") %></td>

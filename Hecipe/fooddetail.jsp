@@ -63,7 +63,7 @@
 
     <% }else if(session.getAttribute("role")=="member"){
         if(userId == rs2.getInt("userID")){    %>   
-        <a href="editcomment.jsp?id=<%= rs2.getInt("id") %>"><input type="button" value="Edit"></a>
+        <a href="editcomment.jsp?id=<%= id %>&id2=<%= rs2.getInt("id") %>"><input type="button" value="Edit"></a>
         <a href="controller/deletecommentController.jsp?id2=<%= rs2.getInt("id") %>"><input type="button" value="Delete"></a><br>
     <% }} %>
     <% } %>

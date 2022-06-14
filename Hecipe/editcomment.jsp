@@ -1,5 +1,6 @@
 <%@include file="connect.jsp"%>
 <%        
+    String id2 = request.getParameter("id2");
     String id = request.getParameter("id");
     Connect con = Connect.getConnection();
     String query = String.format("SELECT * FROM food WHERE id = ('%s')",id);
@@ -53,26 +54,20 @@
         while(rs2.next()) { 
     %>
         <%= rs2.getString("Name") %><br>
+        <% if (rs2.getInt("id") == Integer.parseInt(id2)){ %>
+            <form action="controller/editcommentController.jsp">
+                <input type="hidden" name = "id" value="<%= id %>" >
+                <input type="hidden" name = "id2" value="<%= id2 %>" >
+                <textarea name="editcomment" id="editcomment" cols="30" rows="10"><%= rs2.getString("comment") %></textarea>
+                <button type="submit">Edit Comment</button>
+            </form>
+        <% } else {%>
+        <%= rs2.getString("Name") %><br>
         <%= rs2.getString("comment") %><br>
-    <% if(session.getAttribute("role").equals("admin")){ %>        
-            <a href="controller/deletecommentController.jsp?id2=<%= rs2.getInt("id")%>"><button>Delete</button></a>   <br>      
+        <% }}%>
 
-    <% }else if(session.getAttribute("role").equals("member")){
-        if(userId == rs2.getInt("userID")){    %>   
-        <a href="editcomment.jsp?id=<%= rs2.getInt("id") %>"><input type="button" value="Edit"></a>
-        <a href="controller/deletecommentController.jsp?id2=<%= rs2.getInt("id") %>"><input type="button" value="Delete"></a><br>
-    <% }} %>
-    <% } %>
 
-    <%-- Insert comment --%>
-    <% if(session.getAttribute("role").equals("member")){ %>
-        <form action="controller/addcommentController.jsp">
-            <input type="hidden" name = "id" value="<%= id %>" >
-            <textarea name="addcomment" id="" cols="30" rows="10"></textarea>
-            <button type="submit">Post Comment</button>
-        </form>
-        <p> <%= session.getAttribute("errorcomment") == null ? "" : session.getAttribute("errorcomment") %></P>
-    <% } %>
+        <p> <%= session.getAttribute("erroreditcomment") == null ? "" : session.getAttribute("erroreditcomment") %></P>
 
 </body>
 </html>
