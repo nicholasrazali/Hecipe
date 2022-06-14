@@ -11,7 +11,6 @@
     <%@ include file="header.jsp" %>
 
     <%-- Error login --%>
-   <p> <%= session.getAttribute("error") == null ? "" : session.getAttribute("error") %></P>
 
 
     <%-- Remember me --%>
@@ -31,34 +30,49 @@
         }
     %>
 
-    
-    <div class="content container-md p-5">
+    <div class="container-md p-5">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 style = "text-decoration: underline;   ">Login</h1>
+                <h1 style = "text-decoration: underline;">Login</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <form action="controller/loginController.jsp" >
-                    <table  >
-                        <tr>
-                            <td><label for="email">Email: </label></td>
-                            <td><input type="text" name="email" placeholder="E-mail"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="password">Password: </label></td>
-                            <td><input type="password" name="password" placeholder="Password"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="remember" value="remember">Remember me</td>
-                        </tr>
-                    </table>
-                    
-                    <div class="form-group text-center">
-                        <button type="submit">Login</button>
-                    </div>
-                </form>
+        <div class="container-md p-5 d-flex justify-content-center">
+            <div class="row" style="width: 30%;">
+                <div class="col-12 border border-secondary rounded">
+                    <form action="controller/loginController.jsp">
+                        <!-- <table>
+                            <tr>
+                                <td><label for="email">Email: </label></td>
+                                <td><input type="text" name="email" placeholder="E-mail" class="form-control border-success"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="password">Password: </label></td>
+                                <td><input type="password" name="password" placeholder="Password" class="form-control border-success"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="remember" value="remember">  Remember me</td>
+                            </tr>
+                        </table> -->
+                        
+                        <div class="m-3">
+                            <label for="email">Email: </label>
+                            <input type="text" name="email" placeholder="E-mail" class="form-control border-danger">
+                        </div>
+                        <div class="m-3">
+                            <label for="password">Password: </label>
+                            <input type="password" name="password" placeholder="Password" class="form-control border-danger">
+                        </div>
+                        <div class="m-3">
+                            <input type="checkbox" name="remember" value="remember">  Remember me
+                        </div>
+                        
+                        <div class="form-group text-center m-3">
+                            <button type="submit" class="btn btn-danger">Login</button>
+                        </div>
+                    </form>
+                    <p> <%= session.getAttribute("errorLogin") == null ? "" : session.getAttribute("errorLogin") %></P>
+
+                </div>
             </div>
         </div>
     </div>

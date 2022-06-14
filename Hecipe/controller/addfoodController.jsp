@@ -33,7 +33,7 @@
         response.sendRedirect("../addfood.jsp");
     }
     else if(checkdesc < 4){
-        session.setAttribute("errorfood", "Description should at least 5 words");
+        session.setAttribute("errorfood", "Description should at least be 5 words");
         response.sendRedirect("../addfood.jsp");
     }
     else if(price.equals("") || price == null){

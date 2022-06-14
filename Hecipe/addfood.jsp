@@ -24,9 +24,7 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-    <p> <%= session.getAttribute("errorfood") == null ? "" : session.getAttribute("errorfood") %></P>
-
-    <form action="controller/addfoodController.jsp" method="get">
+    <!-- <form action="controller/addfoodController.jsp" method="get">
         <table>
             <tr>
                 <td>Name: </td>
@@ -56,8 +54,76 @@
         </table>
     </form>
 
-    <br>
+    <br> -->
+    <div class="container-md">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 style = "text-decoration: underline;">Add Food</h1>
+            </div>
+        </div>
+        <div class="container-md p-5 d-flex justify-content-center">
+            <div class="row" style="width: 40%;">
+                <div class="col-12 border border-secondary rounded">
+                    <form action="controller/addfoodController.jsp">
+                        <div class="row m-3">
+                            <div class="col-3">
+                                <label for="foodname">Name: </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name="foodname" placeholder="Name" class="form-control border-secondary">
+                            </div>
+                        </div>
 
+                        <div class="row m-3">
+                            <div class="col-3">
+                                <label for="category">Category: </label>
+                            </div>
+                            <div class="col-9">
+                                <select id="category" name="category">
+                                    <option value="Meats">Meats</option>
+                                    <option value="Vegetarian">Vegetarian</option>
+                                    <option value="Snack">Snack</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-3">
+                                <label for="description">Description: </label>
+                            </div>
+                            <div class="col-9">
+                                <textarea name="description" id="" cols="20" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-3">
+                                <label for="foodprice">Price: </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="number" name="foodprice" id="foodprice">
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-3">
+                                <label for="foodqty">Quantity: </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="number" name="foodqty" id="foodqty">
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center m-3">
+                            <button type="submit" class="btn btn-success">Add Food</button>
+                        </div>
+                    </form>
+                    <p> <%= session.getAttribute("errorfood") == null ? "" : session.getAttribute("errorfood") %></P>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <%@ include file="footer.jsp" %>

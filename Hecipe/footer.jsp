@@ -8,10 +8,10 @@
         position: fixed;
         bottom: 0;
         text-align: center;
-        
+        margin-top: 20px;
     }
 </style>
 <div class = "footer">
-    <h3>Indonesian Warteg &copy Copyright 2022</h3>
+    <h5>&copy 2022 Hecipe | All Rights Reserved</h4>
 </div>
     

@@ -32,67 +32,75 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
+    <div class="container-md p-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 style = "text-decoration: underline;">Detail Transactions</h1>
+            </div>
+        </div>
         <%
         
-        String query = String.format("SELECT * FROM cart join food on cart.foodID = food.id join trdetail on cart.cartID = trdetail.cartID WHERE trdetail.trID = %d ",trId );        ResultSet rs = con.executeQuery(query);
-        rs = con.executeQuery(query);
-    %>
-    <br>
-    <table>
-        <%-- <%  if(session.getAttribute("role") == null){ %> --%>
-        <%if(!rs.next()) {out.println("Cart is empty");%>
-        <% } else{  %>
-        <tr>
-            <td>Image</td>
-            <td>Name</td>
-            <td>Quantity</td>
-            <td>Price</td>
-            <td>Subtotal</td>
-        </tr>
-        <% } %>
-        
-        <%
-        query = String.format("SELECT * FROM cart join food on cart.foodID = food.id join trdetail on cart.cartID = trdetail.cartID WHERE trdetail.trID = %d ",trId );
-        rs = con.executeQuery(query);
-        int total = 0;
+            String query = String.format("SELECT * FROM cart join food on cart.foodID = food.id join trdetail on cart.cartID = trdetail.cartID WHERE trdetail.trID = %d ",trId );
+            ResultSet rs = con.executeQuery(query);
+            rs = con.executeQuery(query);
         %>
-         <p> <%= session.getAttribute("errorqty") == null ? "" : session.getAttribute("errorqty") %></P>
-        <% while(rs.next()) { %>
-        <tr>
-                <td><a><img src="<%= rs.getString("image") %>" > </a></td>
-                <td><a href="fooddetail.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("name")%><a></td>
+        <table style="width: 100%; text-align: center;">
+            <%-- <%  if(session.getAttribute("role") == null){ %> --%>
+                <%if(!rs.next()) {out.println("Cart is empty");%>
+                <% } else{  %>
+                    <tr style="color:white; background-color: red;padding: 5px;">
+                        <td style="width: 30%; padding: 5px;">Image</td>
+                        <td style="width: 20%">Name</td>
+                        <td style="width: 10%">Quantity</td>
+                        <td style="width: 10%">Price</td>
+                        <td style="width: 20%">Subtotal</td>
+                    </tr>
+                <% } %>
                 
-                <td><%= rs.getInt("quantity") %></td>
-                <td><%= rs.getInt("price") %></td>
-                <td><%= rs.getInt("price") * rs.getInt("quantity")%></td>
-                <% total = total + rs.getInt("price") * rs.getInt("quantity"); %>
-        </tr>
-       
-        <% } %>
-        <% if(total!=0){ %>
-        <tr> 
-            <td> 
-                <% 
-                        out.println("Total");
-                        out.println(total);
-                    
+                <%
+                query = String.format("SELECT * FROM cart join food on cart.foodID = food.id join trdetail on cart.cartID = trdetail.cartID WHERE trdetail.trID = %d ",trId );
+                rs = con.executeQuery(query);
+                int total = 0;
                 %>
-            </td>
-        </tr>
-        <% } %>
+                <p> <%= session.getAttribute("errorqty") == null ? "" : session.getAttribute("errorqty") %></P>
+                <% while(rs.next()) { %>
+                    <tr style="border-bottom: 1px solid black">
+                        <td><a><img src="<%= rs.getString("image") %>" > </a></td>
+                        <td><a href="fooddetail.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("name")%><a></td>
+                        <td><%= rs.getInt("quantity") %></td>
+                        <td><%= rs.getInt("price") %></td>
+                        <td><%= rs.getInt("price") * rs.getInt("quantity")%></td>
+                        <% total = total + rs.getInt("price") * rs.getInt("quantity"); %>    
+                    </tr>
+            
+                <% } %>
+        </table>
 
-    </table>
-    <% query = String.format("SELECT * FROM trheader WHERE trID = '%d'",trId);
-        rs = con.executeQuery(query);
-        if(rs.next()) proses = rs.getString("proses");
-    %>
-    <% if(session.getAttribute("role") == "admin" & proses.equals("false")) {%>
-    <form action="controller/prosesController.jsp">
-        <input type="hidden" name = "trid" value="<%= trId %>" >
-        <button type="submit">Process</button>
-    </form>
-    <% } %>
- <br><br><br><br><br><br>
+        <% if(total!=0){ %>
+
+            <div class="row" style="text-align: right;">
+                <div class="col-12">
+                    <span>Total: <%=total%></span>
+                </div>
+            </div>
+            <div class="row" style="text-align: right;">
+                <div class="col-12">
+                    <% query = String.format("SELECT * FROM trheader WHERE trID = '%d'",trId);
+                    rs = con.executeQuery(query);
+                    if(rs.next()) proses = rs.getString("proses");
+                    %>
+                    <% if(session.getAttribute("role") == "admin" & proses.equals("false")) {%>
+                    <form action="controller/prosesController.jsp">
+                        <input type="hidden" name = "trid" value="<%= trId %>" >
+                        <button type="submit" class="btn btn-success">Process</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+    
+            <% } %>
+
+    </div>
 
 
 
@@ -100,4 +108,12 @@
     
 </body>
 </html>
+
+<style>
+    img{
+        padding: 20px;
+        width: 400px;
+        height: 300px;
+    }
+</style>
 

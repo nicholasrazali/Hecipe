@@ -30,32 +30,32 @@
     
     
     if(email.equals("") || email == null){
-        session.setAttribute("error", "Email should not be empty");
+        session.setAttribute("errorLogin", "Email should not be empty");
         response.sendRedirect("../login.jsp");
     }
     else if(!email.contains("@") || !email.contains(".")){
-        session.setAttribute("error", "Email should contain at(@) and dot(.) symbol");
+        session.setAttribute("errorLogin", "Email should contain at(@) and dot(.) symbol");
         response.sendRedirect("../login.jsp");
     }
     else if(checkemail > 1){
-        session.setAttribute("error", "Email should contain only one at(@) symbol");
+        session.setAttribute("errorLogin", "Email should contain only one at(@) symbol");
         response.sendRedirect("../login.jsp");
     }
     else 
     if(check > 0){
-        session.setAttribute("error", "Email should at (@) and dot(.) symbol must not be side by side");
+        session.setAttribute("errorLogin", "Email should at (@) and dot(.) symbol must not be side by side");
         response.sendRedirect("../login.jsp");
     }
     else if(!rs.next()){
-        session.setAttribute("error", "Wrong Email");
+        session.setAttribute("errorLogin", "Wrong Email");
         response.sendRedirect("../login.jsp");
     }
     else if(password =="" || password==null){
-        session.setAttribute("error", "Password should not be empty");
+        session.setAttribute("errorLogin", "Password should not be empty");
         response.sendRedirect("../login.jsp");
     }
     else if(password.length() < 6){
-        session.setAttribute("error", "Password must be at least 6 characters");
+        session.setAttribute("errorLogin", "Password must be at least 6 characters");
         response.sendRedirect("../login.jsp");
     }
     else{
@@ -67,13 +67,14 @@
             }
             else{
                 session.setAttribute("role", "member");
+                session.setAttribute("user_name",rs.getString("Name"));
             }
             session.setAttribute("user",rs.getInt("Id"));
             session.setAttribute("login", (session.getAttribute("login") == null) ? 1 : ((Integer)(session.getAttribute("login"))+1));
             response.sendRedirect("../home.jsp");
         }
         else{
-            session.setAttribute("error", "Wrong Password");
+            session.setAttribute("errorLogin", "Wrong Password");
             response.sendRedirect("../login.jsp");
         }
     

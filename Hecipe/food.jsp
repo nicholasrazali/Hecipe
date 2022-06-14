@@ -65,86 +65,130 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-    <%-- search --%>
-    <form action="" method="get">
-        <input type="text" name="search" id="">
-        <select id="searchby" name="searchby">
-                <option value="name">Name</option>
-                <option value="category">Category</option>
-                <option value="description">Description</option>
-        </select>
-         <button type="submit">Search</button>
-    </form>
+    <div class="container-md p-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 style = "text-decoration: underline;">Foods</h1>
+            </div>
+        </div>
+        <%-- search --%>
+        <form action="" method="get">
+            <!-- <input type="text" name="search" id="">
+            <select id="searchby" name="searchby">
+                    <option value="name">Name</option>
+                    <option value="category">Category</option>
+                    <option value="description">Description</option>
+            </select>
+            <button type="submit">Search</button> -->
+            <div class="row">
+                <div class="col m-2">
+                    <div class="input-group" style="width: 80%;">
+                        <input type="text" name="search" class="form-control" placeholder="Search food by" aria-describedby="btnGroupAddon">
+                        <select id="searchby" name="searchby">
+                            <option value="name">Name</option>
+                            <option value="category">Category</option>
+                            <option value="description">Description</option>
+                        </select>
+                        <button type="submit" class="btn btn-danger">Search</button>
+                      </div>
+                </div>
+                <div class="col m-2" style ="text-align:right">
+                    <%-- admin add food --%>
+                    <%  if(session.getAttribute("role") == "admin"){ %>
+                        <a href="addfood.jsp"><input type="button" class="btn btn-success" value="Add new food"></a>
+                    <% } %>
+                </div>
+            </div>
+            
+        </form>
 
-    <%-- admin add food --%>
-    <%  if(session.getAttribute("role") == "admin"){ %>
-        <a href="addfood.jsp"><input type="button" value="Add new food"></a>
-    <% } %>
 
-    <%
 
-        String query = String.format("SELECT * FROM food LIMIT %d OFFSET %d", dataPerPage, startData);
+        <%
 
-        if(!value.isEmpty()){
-            if(searchby.equals("name"))
-            query = String.format("SELECT * FROM food WHERE name LIKE '%%%s%%' LIMIT %d OFFSET %d",value, dataPerPage, startData);
+            String query = String.format("SELECT * FROM food LIMIT %d OFFSET %d", dataPerPage, startData);
 
-            else if(searchby.equals("category"))
-            query = String.format("SELECT * FROM food WHERE category LIKE '%%%s%%' LIMIT %d OFFSET %d",value, dataPerPage, startData);
+            if(!value.isEmpty()){
+                if(searchby.equals("name"))
+                query = String.format("SELECT * FROM food WHERE name LIKE '%%%s%%' LIMIT %d OFFSET %d",value, dataPerPage, startData);
 
-            else
-            query = String.format("SELECT * FROM food WHERE description LIKE '%%%s%%' LIMIT %d OFFSET %d",value, dataPerPage, startData);
-        }
+                else if(searchby.equals("category"))
+                query = String.format("SELECT * FROM food WHERE category LIKE '%%%s%%' LIMIT %d OFFSET %d",value, dataPerPage, startData);
 
-        ResultSet rs = con.executeQuery(query);
-    %>
-    <br>
-    <table>
-        <%-- <%  if(session.getAttribute("role") == null){ %> --%>
-        <tr>
-            <td>Image</td>
-            <td>Name</td>
-            <td>Category</td>
-            <td>Price</td>
-            <%  if(session.getAttribute("role") != null){ %>
-                <td>Action</td>
-            <% } %>
-        </tr>
-        <% while(rs.next()) { %>
-        <tr>
-                <td><a><img src="<%= rs.getString("image") %>" > </a></td>
-                <td><a href="fooddetail.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("name")%><a></td>
-                <td><%= rs.getString("category") %></td>
-                <td><%= rs.getInt("price") %></td>
+                else
+                query = String.format("SELECT * FROM food WHERE description LIKE '%%%s%%' LIMIT %d OFFSET %d",value, dataPerPage, startData);
+            }
 
-                <% if(session.getAttribute("role")=="admin"){ %>
+            ResultSet rs = con.executeQuery(query);
+        %>
+        <br>
+        <table style="width: 100%; text-align: center;">
+            <%-- <%  if(session.getAttribute("role") == null){ %> --%>
+            <tr style="color:white; background-color: red;padding: 5px;">
+                <td style="width: 40%; padding: 5px;">Image</td>
+                <td style="width: 20%">Name</td>
+                <td style="width: 10%">Category</td>
+                <td style="width: 10%">Price</td>
+                <%  if(session.getAttribute("role") != null){ %>
+                    <td style="width: 20%">Action</td>
+                <% } %>
+            </tr>
+            <% while(rs.next()) { %>
+            <tr style="border-bottom: 1px solid black">
+                    <td><a><img src="<%= rs.getString("image") %>" > </a></td>
+                    <td><a href="fooddetail.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("name")%><a></td>
+                    <td><%= rs.getString("category") %></td>
+                    <td><%= rs.getInt("price") %></td>
+
+                    <% if(session.getAttribute("role")=="admin"){ %>
+                        <td>
+                            <a href="editfood.jsp?id=<%= rs.getInt("id") %>"><input type="button" class="btn btn-warning" value="Edit"></a>
+                            <a href="controller/deleteController.jsp?id=<%= rs.getInt("id") %>"><input type="button" class="btn btn-danger" value="Delete"></a>
+                        </td>
+                    <% } %>
+                    <% if(session.getAttribute("role")=="member"){ %>
                     <td>
-                        <a href="editfood.jsp?id=<%= rs.getInt("id") %>"><input type="button" value="Edit"></a>
-                        <a href="controller/deleteController.jsp?id=<%= rs.getInt("id") %>"><input type="button" value="Delete"></a>
-                    </td>
-                <% } %>
-                <% if(session.getAttribute("role")=="member"){ %>
-                <td>
-                <form action="controller/addcartController.jsp" >
-                    <input type="hidden" name = "id" value="<%= rs.getInt("id") %>" >
-                    <input type="hidden" name = "asaladd" value="food" >
-                    <button type="submit">Add cart</button>
-                </form>
-                    </td>
-                <% } %>
-                
+                    <form action="controller/addcartController.jsp" >
+                        <input type="hidden" name = "id" value="<%= rs.getInt("id") %>" >
+                        <input type="hidden" name = "asaladd" value="food" >
+                        <button type="submit" class="btn btn-danger">Add cart</button>
+                    </form>
+                        </td>
+                    <% } %>
+                    
 
-        </tr>
+            </tr>
+            <% } %>
+        </table>
+        <div>
+            <nav style="display: flex;justify-content: center;margin: 30px 30px;">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="food.jsp?page=<%= 1 %>&searchby=<%=searchby%>&search=<%=value%>">First</a></li>
+                    <li class="page-item"><a class="page-link" href="food.jsp?page=<%= currentPage-1 %>&searchby=<%=searchby%>&search=<%=value%>">Previous</a></li>
+        <%
+            for(int i = 1; i <= totalPages; i++){
+        %>
+            <li class="page-item"><a class="page-link" href="food.jsp?page=<%= i %>&searchby=<%=searchby%>&search=<%=value%>"> <%= i %> </a></li>
         <% } %>
-    </table>
 
-    <%
-        for(int i = 1; i <= totalPages; i++){
-    %>
-        <a href="food.jsp?page=<%= i %>&searchby=<%=searchby%>&search=<%=value%>"> <%= i %> </a>
-    <% } %>
+                  <li class="page-item"><a class="page-link" href="food.jsp?page=<%= currentPage+1 %>&searchby=<%=searchby%>&search=<%=value%>">Next</a></li>
+                  <li class="page-item"><a class="page-link" href="food.jsp?page=<%= totalPages %>&searchby=<%=searchby%>&search=<%=value%>">Last</a></li>
+                </ul>
+              </nav>
+        </div>
+    </div>
 
     <%@ include file="footer.jsp" %>
     
 </body>
 </html>
+<style>
+img{
+    padding: 20px;
+    width: 400px;
+    height: 300px;
+}
+tr td{
+    border-bottom: 1px solid black;
+}
+</style>
