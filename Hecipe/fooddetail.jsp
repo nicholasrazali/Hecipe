@@ -38,7 +38,6 @@
     <%  }else {%>
     <%@     include file="memberheader.jsp" %>
     <%  } %>
-
     <div class="container-md">
         <div class="row">
             <div class="col-12 text-center">
@@ -75,7 +74,16 @@
                             </div>
 
                         </div>
-                
+                    
+                        <div class="col-2 align-self-end m-3">
+                        <% if(session.getAttribute("role")=="member"){ %>   
+                            <form action="controller/addcartController.jsp" >
+                            <input type="hidden" name = "id" value="<%= id %>" >
+                            <input type="hidden" name = "asaladd" value="detail" >
+                            <button type="submit" class="btn btn-danger">Add to cart</button>
+                            </form>
+                        <% } %>
+                        </div>
                     </div>
                 </div>
             </div>
