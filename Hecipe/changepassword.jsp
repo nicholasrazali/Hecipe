@@ -17,28 +17,6 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
     <% String id = request.getParameter("id"); %>
-    <!-- <form action="controller/changepasswordController.jsp" method="post" >
-        <input type="hidden" name = "id" value="<%= id %>" >
-        <table>
-            <tr>
-                <td>Old Password:</td>
-                <td><input type="password" name="oldpassword" id=""></td>
-            </tr>
-            <tr>
-                <td>New Password:</td>
-                <td><input type="password" name="newpassword" id=""></td>
-            </tr>
-            <tr>
-                <td>Confirm Password:</td>
-                <td><input type="password" name="confpassword" id=""></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Change Password"></td>
-            </tr>
-        </table>
-        <p> <%= session.getAttribute("errorpass") == null ? "" : session.getAttribute("errorpass") %></P>
-    </form> -->
 
     <div class="container-md p-5">
         <div class="row">

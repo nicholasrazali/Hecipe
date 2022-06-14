@@ -23,38 +23,6 @@
     <%  }else {%>
     <%@     include file="memberheader.jsp" %>
     <%  } %>
-
-    <!-- <form action="controller/addfoodController.jsp" method="get">
-        <table>
-            <tr>
-                <td>Name: </td>
-                <td><input type="text" name="foodname" id=""></td>
-            </tr>
-            <tr>
-                <td>Category:</td>
-                <td><select id="category" name="category">
-                    <option value="Meats">Meats</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Snack">Snack</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td><textarea name="description" id="" cols="20" rows="2"></textarea></td>
-            </tr>
-            <tr>
-                <td>Price:</td>
-                <td><input type="number" name="foodprice" id="foodprice"></td>
-            </tr>
-            <tr>
-                <td>Quantity:</td>
-                <td><input type="number" name="foodqty" id="foodqty"></td>
-            </tr>
-            <tr><td><button type="submit">Add Food</button></td></tr>
-        </table>
-    </form>
-
-    <br> -->
     <div class="container-md">
         <div class="row">
             <div class="col-12 text-center">

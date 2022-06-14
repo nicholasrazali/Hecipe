@@ -67,9 +67,6 @@
                             <button type="submit" class="btn btn-danger">Change Password</button>
                         </div>
                     </form>
-                    <!-- <a href="changepassword.jsp?id=<%=userId%>">
-                        <input type="button" class="btn btn-danger" value="Change Password">
-                    </a> -->
                     <% }%>
 
                 </div>

@@ -40,20 +40,6 @@
             <div class="row" style="width: 30%;">
                 <div class="col-12 border border-secondary rounded">
                     <form action="controller/loginController.jsp">
-                        <!-- <table>
-                            <tr>
-                                <td><label for="email">Email: </label></td>
-                                <td><input type="text" name="email" placeholder="E-mail" class="form-control border-success"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="password">Password: </label></td>
-                                <td><input type="password" name="password" placeholder="Password" class="form-control border-success"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="remember" value="remember">  Remember me</td>
-                            </tr>
-                        </table> -->
-                        
                         <div class="m-3">
                             <label for="email">Email: </label>
                             <input type="text" name="email" placeholder="E-mail" class="form-control border-danger">

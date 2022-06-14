@@ -9,32 +9,6 @@
 <body>
 
     <%@ include file="header.jsp" %>
-
-    <!-- <form action="controller/registerController.jsp" method="post" >
-        <table>
-            <tr>
-                <td>Name: </td>
-                <td><input type="text" name="name" id=""></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="text" name="email" id=""></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" name="password" id=""></td>
-            </tr>
-            <tr>
-                <td>Confirm Password:</td>
-                <td><input type="password" name="confpassword" id=""></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Register"></td>
-            </tr>
-        </table>
-        <p> <%= session.getAttribute("error") == null ? "" : session.getAttribute("error") %></P>
-    </form> -->
     <div class="container-md p-5">
         <div class="row">
             <div class="col-12 text-center">
@@ -45,19 +19,6 @@
             <div class="row" style="width: 30%;">
                 <div class="col-12 border border-secondary rounded">
                     <form action="controller/registerController.jsp" method="post">
-                        <!-- <table>
-                            <tr>
-                                <td><label for="email">Email: </label></td>
-                                <td><input type="text" name="email" placeholder="E-mail" class="form-control border-success"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="password">Password: </label></td>
-                                <td><input type="password" name="password" placeholder="Password" class="form-control border-success"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="remember" value="remember">  Remember me</td>
-                            </tr>
-                        </table> -->
                         <div class="m-3">
                             <label for="name">Name: </label>
                             <input type="text" name="name" placeholder="Name" class="form-control border-danger">

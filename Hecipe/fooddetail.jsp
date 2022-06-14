@@ -39,24 +39,6 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-
-    <!-- <center><label><%=foodname%></label></center><br>
-    <label>Categoty</label><br>
-    <label><%=category%></label><br>
-    <label>Description</label><br>
-    <label><%=description%></label><br>
-    <label>Price</label><br>
-    <label><%=price%></label><br>
-    <label>Quantity</label><br>
-    <label><%=qty%></label><br>
-    <% if(session.getAttribute("role")=="member"){ %>   
-        <form action="controller/addcartController.jsp" >
-        <input type="hidden" name = "id" value="<%= id %>" >
-        <input type="hidden" name = "asaladd" value="detail" >
-        <button type="submit">Add cart</button>
-        </form>
-    <% } %> -->
-
     <div class="container-md">
         <div class="row">
             <div class="col-12 text-center">

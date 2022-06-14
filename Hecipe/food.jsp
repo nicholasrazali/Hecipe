@@ -73,13 +73,6 @@
         </div>
         <%-- search --%>
         <form action="" method="get">
-            <!-- <input type="text" name="search" id="">
-            <select id="searchby" name="searchby">
-                    <option value="name">Name</option>
-                    <option value="category">Category</option>
-                    <option value="description">Description</option>
-            </select>
-            <button type="submit">Search</button> -->
             <div class="row">
                 <div class="col m-2">
                     <div class="input-group" style="width: 80%;">

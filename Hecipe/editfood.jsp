@@ -43,55 +43,6 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-
-    <!-- <form action="controller/editfoodController.jsp">
-        <input type="hidden" name = "id" value="<%= id %>" >
-        <table>
-            <tr>
-                <td>Name: </td>
-                <td><input type="text" name="foodname" id="" value="<%=foodname%>"></td>
-            </tr>
-            
-            <tr>
-                <td>Category:</td>
-                <% if(category.equals("Meats")){%>
-                <td><select id="category" name="category" value="Vegetarian">
-                    <option value="Meats" selected>Meats</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Snack">Snack</option>
-                </select></td>
-                <% } else if(category.equals("Vegetarian")){%>
-                <td><select id="category" name="category" value="Vegetarian">
-                    <option value="Meats">Meats</option>
-                    <option value="Vegetarian" selected>Vegetarian</option>
-                    <option value="Snack">Snack</option>
-                </select></td>
-                <% } else {%>
-                <td><select id="category" name="category" value="Vegetarian">
-                    <option value="Meats">Meats</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Snack" selected>Snack</option>
-                </select></td>
-                <% } %>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td><textarea name="description" id="" cols="20" rows="2" ><%=description%></textarea></td>
-            </tr>
-            <tr>
-                <td>Price:</td>
-                <td><input type="number" name="foodprice" id="foodprice" value="<%=price%>"></td>
-            </tr>
-            <tr>
-                <td>Quantity:</td>
-                <td><input type="number" name="foodqty" id="foodqty" value="<%=qty%>"></td>
-            </tr>
-            <tr><td><button type="submit">Edit Food</button></td></tr>
-        </table>
-    </form>
-
-    <br> -->
-
     <div class="container-md">
         <div class="row">
             <div class="col-12 text-center">

@@ -48,15 +48,6 @@
             </tr>
             <%} else out.println("no transaction");%>
 
-        <!-- <table>
-            <%if(rs.next()){%>
-            <tr>
-                <td>Date</td>
-                <td>Processed</td>
-                <td>Action</td>
-            </tr>
-            <%} else out.println("no transaction");%> -->
-
             <%
                 query = "SELECT * FROM trheader";
                 if(session.getAttribute("role") == "member"){

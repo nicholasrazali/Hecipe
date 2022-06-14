@@ -34,14 +34,6 @@
     <%@     include file="memberheader.jsp" %>
     <%  } %>
 
-    <!-- <%  
-        out.println((session.getAttribute("login") == null) ? 0 : session.getAttribute("login"));
-    %>
-
-    <%
-        out.println("Hallo, " + session.getAttribute("role"));
-    %> -->
-
     <div class="container">
         <div class="row m-2 p-2" style="background-color: #D0C9C0;">
           <div class="col">
@@ -86,13 +78,6 @@
                     fill your belly with our greatest cuisine from around the world.
                 </span>
                 <form action="food.jsp" method="get">
-                    <!-- <input type="text" name="search" id="">
-                    <select id="searchby" name="searchby">
-                            <option value="name">Name</option>
-                            <option value="category">Category</option>
-                            <option value="description">Description</option>
-                    </select>
-                     <button type="submit">Search</button> -->
                      <div class="input-group m-2">
                         <input type="text" name="search" class="form-control" placeholder="Search food by" aria-describedby="btnGroupAddon">
                         <select id="searchby" name="searchby">
