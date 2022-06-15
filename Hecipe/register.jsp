@@ -32,7 +32,7 @@
                             <input type="password" name="password" placeholder="Password" class="form-control border-danger">
                         </div>
                         <div class="m-3">
-                            <label for="confpassword">Email: </label>
+                            <label for="confpassword">Confirm Password: </label>
                             <input type="password" name="confpassword" placeholder="Confirm Password" class="form-control border-danger">
                         </div>
                         
