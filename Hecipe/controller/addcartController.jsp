@@ -31,8 +31,12 @@
         
     } else{
         qty = 1;
+        if(qty > foodqty){
+            session.setAttribute("erroradd","Stock kurang");
+        }else{
         query = String.format("INSERT INTO cart (foodID, userID, quantity, status) VALUES (%d, %d, %d,'%s')",Integer.parseInt(id),userId, qty,status);
         con.executeUpdate(query);
+        }
     }
 
     if(asaladd.equals("detail")){
