@@ -38,6 +38,8 @@
     <%  }else {%>
     <%@     include file="memberheader.jsp" %>
     <%  } %>
+
+    <p> <%= session.getAttribute("erroradd") == null ? "" : session.getAttribute("erroradd") %></P>
     <div class="container-md">
         <div class="row">
             <div class="col-12 text-center">

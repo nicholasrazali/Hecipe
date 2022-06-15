@@ -64,6 +64,7 @@
     <%  }else {%>
     <%@     include file="memberheader.jsp" %>
     <%  } %>
+    <p> <%= session.getAttribute("erroradd") == null ? "" : session.getAttribute("erroradd") %></P>
 
     <div class="container-md p-3">
         <div class="row">
@@ -153,6 +154,7 @@
             </tr>
             <% } %>
         </table>
+        
         <div>
             <nav style="display: flex;justify-content: center;margin: 30px 30px;">
                 <ul class="pagination">
