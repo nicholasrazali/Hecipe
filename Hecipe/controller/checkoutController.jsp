@@ -25,7 +25,9 @@
     rs = con.executeQuery(query);
     int tes = 0;
     
-
+    int qtyfood = 0;
+    int qty = 0;
+    int foodid = 0;
     while(rs.next()){
         cart[tes] = rs.getInt("cartID");
         query = String.format("INSERT INTO trdetail (trID, cartID) VALUES ('%d','%d')",totaltr,cart[tes]);
@@ -34,6 +36,25 @@
     for(int i = 0;i<banyak;i++){
         query = String.format("INSERT INTO trdetail (trID, cartID) VALUES (%d,%d)",totaltr,cart[i]);
         con.executeUpdate(query);
+
+        query = String.format("SELECT * FROM food JOIN cart ON food.id = cart.foodID WHERE cartID = %d",cart[i]);
+        rs = con.executeQuery(query);
+        if(rs.next()){
+            qtyfood = rs.getInt("quantity");
+            foodid = rs.getInt("id");
+        }
+
+        query = String.format("SELECT * FROM cart WHERE cartID = %d",cart[i]);
+        rs = con.executeQuery(query);
+        if(rs.next()){
+            qty = rs.getInt("quantity");
+        }
+
+        qtyfood = qtyfood - qty;
+        if(qtyfood<0) qtyfood = 0 ;
+        query = String.format("UPDATE food SET quantity = %d WHERE id = %d",qtyfood, foodid);
+        con.executeUpdate(query);
+
     }
 
     query = String.format("UPDATE cart SET status = ('%s') WHERE userID = ('%d')","false",Integer.parseInt(userid));
@@ -45,6 +66,8 @@
 
     query = String.format("INSERT INTO trheader (trID, date, userID, proses) VALUES ('%d','%s','%d','%s')",totaltr,date,Integer.parseInt(userid),"false");
     con.executeUpdate(query);
+
+    
 
     response.sendRedirect("../cart.jsp");
 
