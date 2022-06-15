@@ -72,7 +72,7 @@
 
     con.executeUpdate(query);
 
-    response.sendRedirect("../home.jsp");
+    response.sendRedirect("../login.jsp");
     }
 
 %>

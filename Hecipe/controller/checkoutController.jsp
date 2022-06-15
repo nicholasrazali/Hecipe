@@ -23,20 +23,18 @@
 
     query = String.format("SELECT * FROM cart WHERE status = ('%s') AND userID = ('%d')","true",Integer.parseInt(userid));
     rs = con.executeQuery(query);
+    int tes = 0;
     
 
     while(rs.next()){
-        cart[banyak] = rs.getInt("cartID");
-        query = String.format("INSERT INTO trdetail (trID, cartID) VALUES ('%d','%d')",totaltr,cart[banyak]);
-        banyak = banyak + 1;
+        cart[tes] = rs.getInt("cartID");
+        query = String.format("INSERT INTO trdetail (trID, cartID) VALUES ('%d','%d')",totaltr,cart[tes]);
+        tes = tes + 1;
     }
     for(int i = 0;i<banyak;i++){
-        query = String.format("INSERT INTO trdetail (trID, cartID) VALUES ('%d','%d')",totaltr,cart[i]);
+        query = String.format("INSERT INTO trdetail (trID, cartID) VALUES (%d,%d)",totaltr,cart[i]);
         con.executeUpdate(query);
-        out.println(query);
     }
-    
-
 
     query = String.format("UPDATE cart SET status = ('%s') WHERE userID = ('%d')","false",Integer.parseInt(userid));
     con.executeUpdate(query);
@@ -49,7 +47,6 @@
     con.executeUpdate(query);
 
     response.sendRedirect("../cart.jsp");
-
 
 %>
 

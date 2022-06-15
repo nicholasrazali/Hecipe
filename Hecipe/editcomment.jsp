@@ -95,9 +95,8 @@
                     <div class="row">
                         <div class="col-12">
                             <%
-                            String query2 = String.format("SELECT * FROM comment Join user on comment.userID = user.Id WHERE foodID = %d",Integer.parseInt(id));
+                            String query2 = String.format("SELECT * FROM comment Join user on comment.userID = user.Id WHERE foodID = %d AND comment.Id = %d",Integer.parseInt(id),Integer.parseInt(id2));
                             ResultSet rs2 = con.executeQuery(query2);
-                        
                     
                             while(rs2.next()) { 
                             %>
