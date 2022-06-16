@@ -64,7 +64,6 @@
     <%  }else {%>
     <%@     include file="memberheader.jsp" %>
     <%  } %>
-    <p> <%= session.getAttribute("erroradd") == null ? "" : session.getAttribute("erroradd") %></P>
 
     <div class="container-md p-3">
         <div class="row">
@@ -145,14 +144,17 @@
                     <form action="controller/addcartController.jsp" >
                         <input type="hidden" name = "id" value="<%= rs.getInt("id") %>" >
                         <input type="hidden" name = "asaladd" value="food" >
-                        <button type="submit" class="btn btn-danger">Add cart</button>
+                        <button type="submit" class="btn btn-danger">Add to cart</button>
                     </form>
-                        </td>
+
+                    </td>
                     <% } %>
                     
 
             </tr>
             <% } %>
+            <p> <%= session.getAttribute("erroradd") == null ? "" : session.getAttribute("erroradd") %></P>
+
         </table>
         
         <div>

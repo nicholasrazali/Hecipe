@@ -17,13 +17,19 @@
     }
     String send = "";
     
-    if(oldpassword =="" || oldpassword==null || newpassword =="" || newpassword==null){
-        session.setAttribute("errorpass", "Password should not be empty");
+    if(oldpassword =="" || oldpassword==null){
+        session.setAttribute("errorpass", "Old Password should not be empty");
         send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
         response.sendRedirect(send);
     }
     else if(!oldpassword.equals(password)){
         session.setAttribute("errorpass", "Old password must match with current password");
+        send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
+        response.sendRedirect(send);
+    }
+    else if(newpassword =="" || newpassword==null)
+    {
+        session.setAttribute("errorpass", "Old Password should not be empty");
         send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
         response.sendRedirect(send);
     }
