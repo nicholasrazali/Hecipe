@@ -7,12 +7,13 @@
     int checkemail = 0;
     int check = 0;
 
-    if(remember != null){
-        Cookie rememberme = new Cookie("email", email);
-        rememberme.setMaxAge(24 * 60 * 60);
-        response.addCookie(rememberme);
+    String username = "";
+    Connect con = Connect.getConnection();
+    String query = String.format("SELECT * FROM user WHERE Email = '%s' AND Password = '%s'", email,password);
+    ResultSet rs = con.executeQuery(query);
+    if(rs.next()){
+        username = rs.getString("Name");
     }
-    
 
      for(int i = 0; i < email.length(); i++){
         if(email.charAt(i)=='@')               
@@ -24,9 +25,9 @@
             check = check + 1;     
     }
 
-    Connect con = Connect.getConnection();
-    String query = String.format("SELECT * FROM user WHERE email = '%s'", email);
-    ResultSet rs = con.executeQuery(query);
+    
+    query = String.format("SELECT * FROM user WHERE email = '%s'", email);
+    rs = con.executeQuery(query);
     
     
     if(email.equals("") || email == null){
@@ -69,6 +70,13 @@
                 session.setAttribute("role", "member");
                 session.setAttribute("user_name",rs.getString("Name"));
             }
+
+            if(remember != null){
+                Cookie rememberme = new Cookie("username", username);
+                rememberme.setMaxAge(24 * 60 * 60);
+                response.addCookie(rememberme);
+            }
+
             session.setAttribute("user",rs.getInt("Id"));
             session.setAttribute("login", (session.getAttribute("login") == null) ? 1 : ((Integer)(session.getAttribute("login"))+1));
             response.sendRedirect("../home.jsp");
