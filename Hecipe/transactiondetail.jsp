@@ -63,6 +63,8 @@
                 int total = 0;
                 %>
                 <p> <%= session.getAttribute("errorqty") == null ? "" : session.getAttribute("errorqty") %></P>
+                    <% session.setAttribute("errorqty",null); %>
+
                 <% while(rs.next()) { %>
                     <tr style="border-bottom: 1px solid black">
                         <td><a><img src="<%= rs.getString("image") %>" > </a></td>

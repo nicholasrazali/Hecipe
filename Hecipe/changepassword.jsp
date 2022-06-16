@@ -58,6 +58,7 @@
                         </div>
                     </form>
                     <p> <%= session.getAttribute("errorpass") == null ? "" : session.getAttribute("errorpass") %></P>
+                        <% session.setAttribute("errorpass",null); %>
 
                 </div>
             </div>

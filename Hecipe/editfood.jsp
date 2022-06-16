@@ -122,6 +122,7 @@
                         </div>
                     </form>
                     <p> <%= session.getAttribute("erroreditfood") == null ? "" : session.getAttribute("erroreditfood") %></P>
+                        <% session.setAttribute("erroreditfood",null); %>
 
                 </div>
             </div>

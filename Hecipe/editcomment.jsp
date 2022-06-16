@@ -114,6 +114,7 @@
                             <%= rs2.getString("comment") %><br>
                             <% }}%>
                             <p> <%= session.getAttribute("erroreditcomment") == null ? "" : session.getAttribute("erroreditcomment") %></P>
+                                <% session.setAttribute("erroreditcomment",null); %>
 
                         </div>
                     </div>

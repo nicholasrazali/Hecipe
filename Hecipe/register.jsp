@@ -41,6 +41,8 @@
                         </div>
                     </form>
                     <p> <%= session.getAttribute("errorRegister") == null ? "" : session.getAttribute("errorRegister") %></P>
+                        <% session.setAttribute("errorRegister",null); %>
+
                 </div>
             </div>
 

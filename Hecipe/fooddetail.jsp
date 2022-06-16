@@ -40,6 +40,8 @@
     <%  } %>
 
     <p> <%= session.getAttribute("erroradd") == null ? "" : session.getAttribute("erroradd") %></P>
+        <% session.setAttribute("erroradd",null); %>
+
     <div class="container-md">
         <div class="row">
             <div class="col-12 text-center">
@@ -144,6 +146,8 @@
                             <button style="text-align: right;" type="submit" class="btn btn-danger">Post Comment</button>
                         </form>
                         <p> <%= session.getAttribute("errorcomment") == null ? "" : session.getAttribute("errorcomment") %></P>
+                            <% session.setAttribute("errorcomment",null); %>
+
                     <% } %>
                 </div>
             </div>

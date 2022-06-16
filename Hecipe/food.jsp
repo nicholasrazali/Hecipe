@@ -154,6 +154,7 @@
             </tr>
             <% } %>
             <p> <%= session.getAttribute("erroradd") == null ? "" : session.getAttribute("erroradd") %></P>
+                <% session.setAttribute("erroradd",null); %>
 
         </table>
         

@@ -64,6 +64,7 @@
             int total = 0;
             %>
             <p> <%= session.getAttribute("errorqty") == null ? "" : session.getAttribute("errorqty") %></P>
+                <% session.setAttribute("errorqty",null); %>
 
 
             <% while(rs.next()) { %>
