@@ -162,14 +162,22 @@
             <nav style="display: flex;justify-content: center;margin: 30px 30px;">
                 <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="food.jsp?page=<%= 1 %>&searchby=<%=searchby%>&search=<%=value%>">First</a></li>
-                    <li class="page-item"><a class="page-link" href="food.jsp?page=<%= currentPage-1 %>&searchby=<%=searchby%>&search=<%=value%>">Previous</a></li>
-        <%
-            for(int i = 1; i <= totalPages; i++){
-        %>
-            <li class="page-item"><a class="page-link" href="food.jsp?page=<%= i %>&searchby=<%=searchby%>&search=<%=value%>"> <%= i %> </a></li>
-        <% } %>
+                    <% if(currentPage == 1){%>
+                        <li class="page-item"><a class="page-link" href="food.jsp?page=<%= 1%>&searchby=<%=searchby%>&search=<%=value%>">Previous</a></li>
+                    <%} else {%>
+                        <li class="page-item"><a class="page-link" href="food.jsp?page=<%= currentPage-1 %>&searchby=<%=searchby%>&search=<%=value%>">Previous</a></li>
+                    <% } %>
+                    <%
+                        for(int i = 1; i <= totalPages; i++){
+                    %>
+                        <li class="page-item"><a class="page-link" href="food.jsp?page=<%= i %>&searchby=<%=searchby%>&search=<%=value%>"> <%= i %> </a></li>
+                    <% } %>
 
-                  <li class="page-item"><a class="page-link" href="food.jsp?page=<%= currentPage+1 %>&searchby=<%=searchby%>&search=<%=value%>">Next</a></li>
+                    <% if(currentPage == totalPages){%>
+                        <li class="page-item"><a class="page-link" href="food.jsp?page=<%= totalPages%>&searchby=<%=searchby%>&search=<%=value%>">Next</a></li>
+                    <%} else {%>
+                        <li class="page-item"><a class="page-link" href="food.jsp?page=<%= currentPage+1 %>&searchby=<%=searchby%>&search=<%=value%>">Next</a></li>
+                    <% }%>
                   <li class="page-item"><a class="page-link" href="food.jsp?page=<%= totalPages %>&searchby=<%=searchby%>&search=<%=value%>">Last</a></li>
                 </ul>
               </nav>
