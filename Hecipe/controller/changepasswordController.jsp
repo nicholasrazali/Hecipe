@@ -15,32 +15,38 @@
     if(rs.next()){
         password = rs.getString("Password");
     }
+    String send = "";
     
     if(oldpassword =="" || oldpassword==null || newpassword =="" || newpassword==null){
         session.setAttribute("errorpass", "Password should not be empty");
-        response.sendRedirect("../changepassword.jsp");
+        send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
+        response.sendRedirect(send);
     }
     else if(!oldpassword.equals(password)){
         session.setAttribute("errorpass", "Old password must match with current password");
-        response.sendRedirect("../changepassword.jsp");
+        send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
+        response.sendRedirect(send);
     }
     else if(newpassword.length() < 6){
         session.setAttribute("errorpass", "New password must be at least 6 characters");
-        response.sendRedirect("../changepassword.jsp");
+        send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
+        response.sendRedirect(send);
     }
     else if(!newpassword.matches(".*[A-Za-z].*") || !newpassword.matches(".*[0-9].*")){
         session.setAttribute("errorpass", "New password must contains at least one alphabet and one number");
-        response.sendRedirect("../changepassword.jsp");
+        send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
+        response.sendRedirect(send);
     }
     else if(!confpassword.equals(newpassword)){
         session.setAttribute("errorpass", "Confirm password must match with new password");
-        response.sendRedirect("../changepassword.jsp");
+        send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
+        response.sendRedirect(send);
     }
     else{
     query = String.format("UPDATE user SET Password = '%s' WHERE id = ('%s')", newpassword, id);
     session.setAttribute("errorpass", "Success change password");
     con.executeUpdate(query);
-    String send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
+    send = String.format("../changepassword.jsp?id=%d",Integer.parseInt(id));
     response.sendRedirect(send);
     }
 
